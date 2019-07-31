@@ -1,3 +1,3 @@
 # 1year-newbie-challenge
 
-- chapater1. Drumkit
+- chapater1. Drum kit
