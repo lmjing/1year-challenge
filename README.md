@@ -1,3 +1,3 @@
 # 1year-newbie-challenge
 
-- chapater1. Drum kit
+- chapter1. Drum kit
