@@ -1,4 +1,4 @@
-### Drum kit
+# Drum kit
 
 - 과제 설명
   - Drum kit 프로그램을 웹에서 동작하도록 구현한다.
