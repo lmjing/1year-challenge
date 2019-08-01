@@ -1,4 +1,4 @@
-# 1year-newbie-challenge
+# 1year-challenge
 
 ## 챌린지 순서
 - chapter0. [word-light-library-study](https://github.com/yejin0216/words-light-library_study)
