@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="kor">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="drumkit.css" />
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR" rel="stylesheet">
+  <style>
+    html {
+      background: url("../asset/image/background.jpg");
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    .keys {
+      text-align: center;
+      padding-top: 10%;
+    }
+
+    .key {
+      display: inline-block;
+      transition: all 0.07s;
+      width: 100px;
+      color: #fff;
+      font-size: 20px;
+      font-weight: bold;
+      border: 2px solid #000;
+      border-radius: 3px;
+      background-color: rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 10px #000;
+      padding: 10px;
+      margin: 10px;
+      text-align: center;
+    }
+
+    .key.playing {
+      transform: scale(1.1);
+      border: 2px solid #ffc600;
+      box-shadow: 0 0 10px #ffc600;
+    }
+
+    .key .sound {
+      font-size: 12px;
+      color: #ffc600;
+      padding-top: 5px;
+    }
+  </style>
+  <title>JavaScript Drum kit</title>
+</head>
+
+<body>
+  <div class="keys">
+    <div class="key" data-key="65">
+      <kbd>A</kbd>
+      <div class="sound">CLAP</div>
+    </div>
+    <div class="key" data-key="83">
+      <kbd>S</kbd>
+      <div class="sound">HIHAT</div>
+    </div>
+    <div class="key" data-key="68">
+      <kbd>D</kbd>
+      <div class="sound">KICK</div>
+    </div>
+    <div class="key" data-key="70">
+      <kbd>F</kbd>
+      <div class="sound">OPENHAT</div>
+    </div>
+    <div class="key" data-key="71">
+      <kbd>G</kbd>
+      <div class="sound">BOOM</div>
+    </div>
+    <div class="key" data-key="72">
+      <kbd>H</kbd>
+      <div class="sound">RIDE</div>
+    </div>
+    <div class="key" data-key="74">
+      <kbd>J</kbd>
+      <div class="sound">SNARE</div>
+    </div>
+    <div class="key" data-key="75">
+      <kbd>K</kbd>
+      <div class="sound">TOM</div>
+    </div>
+    <div class="key" data-key="76">
+      <kbd>L</kbd>
+      <div class="sound">TINK</div>
+    </div>
+  </div>
+
+  <audio data-key="65" src="../asset/sound/clap.wav"></audio>
+  <audio data-key="83" src="../asset/sound/hihat.wav"></audio>
+  <audio data-key="68" src="../asset/sound/kick.wav"></audio>
+  <audio data-key="70" src="../asset/sound/openhat.wav"></audio>
+  <audio data-key="71" src="../asset/sound/boom.wav"></audio>
+  <audio data-key="72" src="../asset/sound/ride.wav"></audio>
+  <audio data-key="74" src="../asset/sound/snare.wav"></audio>
+  <audio data-key="75" src="../asset/sound/tom.wav"></audio>
+  <audio data-key="76" src="../asset/sound/tink.wav"></audio>
+
+  <script type="text/javascript">
+    window.addEventListener('keydown', function (e) {
+      const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+      const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+      if (!audio) return;
+      audio.currentTime = 0;
+      audio.play();
+
+      key.classList.add('playing');
+    });
+
+    function removeTransition(e) {
+      if (e.propertyName != 'transform') return;
+      e.target.classList.remove('playing');
+    }
+
+    window.addEventListener('transitionend', removeTransition)
+  </script>
+</body>
+
+</html>
