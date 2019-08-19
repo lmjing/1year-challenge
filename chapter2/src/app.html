@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS + JS Clock</title>
+</head>
+<body>
+<div class="clock">
+  <div class="clock-face">
+    <div class="hand hour"></div>
+    <div class="hand minute"></div>
+    <div class="hand second"></div>
+  </div>
+</div>
+
+<style type="text/css">
+  html {
+    background: skyblue;
+    text-align: center;
+  }
+  body {
+    display: inline-block;
+    margin: 30% auto;
+  }
+  .clock {
+    border: 10px solid #fff;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+  }
+  .clock-face {
+    position: relative;
+    height: 100%;
+    width: 100%;
+  }
+  .hand {
+    position: absolute;
+    top: 50%;
+    width: 50%;
+    height: 3px;
+    background-color: #000;
+    transform-origin: 100%;
+    transition: all 0.05s;
+    transform: rotate(90deg);
+  }
+  .hand.second {
+    background-color: red;
+  }
+</style>
+
+<script type="text/javascript">
+  const secondHand = document.querySelector(".second");
+  const minuteHand = document.querySelector(".minute");
+  const hourHand = document.querySelector(".hour");
+  function setDate() {
+    const date = new Date();
+    const secondDegree = (date.getSeconds()/60)*360;
+    secondHand.style.transform = `rotate(${secondDegree}deg)`;
+
+    const minuteDegree = (date.getMinutes()/60)*360;
+    minuteHand.style.transform = `rotate(${minuteDegree}deg)`;
+
+    const hourDegree = (date.getHours()/60)*360;
+    hourHand.style.transform = `rotate(${hourDegree}deg)`;
+
+  }
+
+  setInterval(setDate, 1000);
+</script>
+
+</body>
+</html>
